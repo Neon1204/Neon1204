@@ -1,4 +1,4 @@
-name: Update GitHub Profile Stats
+name: Update GitHub Profile
 
 on:
   workflow_dispatch:
@@ -7,26 +7,28 @@ on:
     - cron: '0 0,12 * * *'
 
 jobs:
-  update-stats:
+  update-snake:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Generate Contribution Snake SVG
+        uses: Platane/snk@v3
+        id: snake
         with:
-          node-version: '20'
+          github_user_name: Neon1204
+          github_api_token: ${{ secrets.GH_TOKEN }}
 
-      - name: Update WakaTime Stats
-        uses: athul/waka-readme@master
-        with:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          STATS_TYPE: time
-
-      - name: Commit and push changes
+      - name: Push Snake SVG
         run: |
+          mkdir -p output
+          cp ${{ steps.snake.outputs.path }} output/github-contribution-grid-snake.svg
+          cp ${{ steps.snake.outputs.path_dark }} output/github-contribution-grid-snake-dark.svg || true
+          
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git diff --staged --quiet || git commit -m "📊 Update stats $(date +'%Y-%m-%d %H:%M')"
-          git push
+          git diff --staged --quiet || git commit -m "🐍 Update contribution snake $(date +'%Y-%m-%d')"
+          git push origin main
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
