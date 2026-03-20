@@ -110,34 +110,34 @@
 <br>
 
 ### 🔥 Streak & Activity
-<img src="https://github-readme-streak-stats.herokuapp.com?user=Neon1204&theme=nord&hide_border=true" width="40%" alt="GitHub Streak" />
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=Neon1204&show_icons=true&theme=nord&icon_color=81a1c1&border_color=3b4f5f&hide_border=true&include_all_commits=true" width="40%" alt="GitHub Stats"/>
+<img src="https://github-readme-streak-stats.herokuapp.com?user=Neon1204&theme=radical" width="40%" alt="GitHub Streak" />
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=Neon1204&show_icons=true&theme=radical&icon_color=8b5cf6&border_color=1e293b&include_all_commits=true" width="40%" alt="GitHub Stats"/>
 
 ### 💻 Most Used Languages  
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=compact&theme=nord&border_color=3b4f5f&hide_border=true&langs_count=8" width="40%" alt="Top Languages"/>
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=donut&theme=nord&hide_border=true&langs_count=6" width="40%" alt="Languages Donut Chart"/>
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=compact&theme=radical&border_color=1e293b&langs_count=8" width="40%" alt="Top Languages"/>
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=donut&theme=radical&langs_count=6" width="40%" alt="Languages Donut Chart"/>
 
 ### 📊 Language Distribution
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Neon1204&theme=nord" width="40%" alt="Repos per Language"/>
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Neon1204&theme=nord" width="40%" alt="Most Commit Language"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Neon1204&theme=radical" width="40%" alt="Repos per Language"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Neon1204&theme=radical" width="40%" alt="Most Commit Language"/>
 
 <br>
 
 ### 📈 Activity Graph  
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Neon1204&bg_color=0f172a&color=81a1c1&line=88c0d0&point=81a1c1&area=true&hide_border=true" width="100%" alt="GitHub Activity Graph"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Neon1204&bg_color=0f172a&color=8b5cf6&line=9e4c98&point=403d3d&area=true" width="100%" alt="GitHub Activity Graph"/>
 
 ### 📊 GitHub Overview
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Neon1204&theme=nord" width="100%" alt="GitHub Overview"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Neon1204&theme=radical" width="100%" alt="GitHub Overview"/>
 
 <br>
 
 ### 🏆 Achievements
-<img src="https://github-profile-trophy.vercel.app/?username=Neon1204&theme=nord&no-frame=true&column=4&margin-w=15&margin-h=15" width="100%" alt="Trophies"/>
+<img src="https://github-profile-trophy.vercel.app/?username=Neon1204&theme=radical&no-frame=true&column=4&margin-w=15&margin-h=15" width="100%" alt="Trophies"/>
 
 <br>
 
 ### ⏱️ Coding Time & Stats
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Neon1204&theme=nord&utcOffset=8" width="40%" alt="Productive Time"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Neon1204&theme=radical&utcOffset=8" width="40%" alt="Productive Time"/>
 
 <br>
 

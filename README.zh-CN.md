@@ -7,7 +7,7 @@
 <h3 align="center">你好，我是向尼 👨‍💻</h3>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=500&color=81a1c1&lines=The+water+does+not+strive+to+be+ahead,+but+to+flow+on+endlessly" alt="打字动画" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=500&color=8b5cf6&lines=The+water+does+not+strive+to+be+ahead,+but+to+flow+on+endlessly" alt="打字动画" />
 </div>
 
 <h4 align="center" style="color: #0077be; margin-top: 8px;">时光流转，我在向前</h4>
@@ -19,9 +19,9 @@
 - 😄 时光流转，我在向前！
 
 <div align="center">
-  <img src="https://img.shields.io/github/followers/Neon1204?style=for-the-badge&color=81a1c1&labelColor=0f172a&logo=github&logoColor=00b4d8" alt="粉丝"/>
-  <img src="https://img.shields.io/github/stars/Neon1204?affiliations=OWNER%2CCOLLABORATOR&style=for-the-badge&color=81a1c1&labelColor=0f172a&logo=github&logoColor=00b4d8" alt="Stars"/>
-  <img src="https://komarev.com/ghpvc/?username=Neon1204&color=81a1c1&style=for-the-badge&label=Profile+Views" alt="访客统计"/>
+  <img src="https://img.shields.io/github/followers/Neon1204?style=for-the-badge&color=8b5cf6&labelColor=0f172a&logo=github&logoColor=00b4d8" alt="粉丝"/>
+  <img src="https://img.shields.io/github/stars/Neon1204?affiliations=OWNER%2CCOLLABORATOR&style=for-the-badge&color=8b5cf6&labelColor=0f172a&logo=github&logoColor=00b4d8" alt="Stars"/>
+  <img src="https://komarev.com/ghpvc/?username=Neon1204&color=8b5cf6&style=for-the-badge&label=Profile+Views" alt="访客统计"/>
 </div>
 
 <p align="center">
@@ -110,34 +110,34 @@
 <br>
 
 ### 🔥 Streak & Activity
-<img src="https://github-readme-streak-stats.herokuapp.com?user=Neon1204&theme=nord&hide_border=true" width="40%" alt="GitHub 连续贡献" />
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=Neon1204&show_icons=true&theme=nord&icon_color=81a1c1&border_color=3b4f5f&hide_border=true&include_all_commits=true" width="40%" alt="GitHub 统计"/>
+<img src="https://github-readme-streak-stats.herokuapp.com?user=Neon1204&theme=radical" width="40%" alt="GitHub 连续贡献" />
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=Neon1204&show_icons=true&theme=radical&icon_color=8b5cf6&border_color=1e293b&include_all_commits=true" width="40%" alt="GitHub 统计"/>
 
 ### 💻 常用语言  
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=compact&theme=nord&border_color=3b4f5f&hide_border=true&langs_count=8" width="40%" alt="主要语言"/>
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=donut&theme=nord&hide_border=true&langs_count=6" width="40%" alt="语言分布"/>
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=compact&theme=radical&border_color=1e293b&langs_count=8" width="40%" alt="主要语言"/>
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=donut&theme=radical&langs_count=6" width="40%" alt="语言分布"/>
 
 ### 📊 语言分布
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Neon1204&theme=nord" width="40%" alt="各语言仓库数"/>
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Neon1204&theme=nord" width="40%" alt="提交最多语言"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Neon1204&theme=radical" width="40%" alt="各语言仓库数"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Neon1204&theme=radical" width="40%" alt="提交最多语言"/>
 
 <br>
 
 ### 📈 活动图  
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Neon1204&bg_color=0f172a&color=81a1c1&line=88c0d0&point=81a1c1&area=true&hide_border=true" width="100%" alt="GitHub 活动图"/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Neon1204&bg_color=0f172a&color=8b5cf6&line=9e4c98&point=403d3d&area=true" width="100%" alt="GitHub 活动图"/>
 
 ### 📊 GitHub 总览
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Neon1204&theme=nord" width="100%" alt="GitHub 总览"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Neon1204&theme=radical" width="100%" alt="GitHub 总览"/>
 
 <br>
 
 ### 🏆 成就
-<img src="https://github-profile-trophy.vercel.app/?username=Neon1204&theme=nord&no-frame=true&column=4&margin-w=15&margin-h=15" width="100%" alt="成就奖杯"/>
+<img src="https://github-profile-trophy.vercel.app/?username=Neon1204&theme=radical&no-frame=true&column=4&margin-w=15&margin-h=15" width="100%" alt="成就奖杯"/>
 
 <br>
 
 ### ⏱️ 编码时间统计
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Neon1204&theme=nord&utcOffset=8" width="40%" alt="编码时间"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Neon1204&theme=radical&utcOffset=8" width="40%" alt="编码时间"/>
 
 <br>
 
