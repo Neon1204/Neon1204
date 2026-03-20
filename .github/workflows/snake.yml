@@ -1,0 +1,34 @@
+name: Generate Contribution Snake
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run every day at midnight
+    - cron: '0 0 * * *'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate Contribution Snake SVG
+        uses: Platane/snk@v3
+        id: snake
+        with:
+          github_user_name: ${{ secrets.GH_USR }}
+          github_api_token: ${{ secrets.GH_TOKEN }}
+
+      - name: Push Snake SVG
+        run: |
+          mkdir -p output
+          cp ${{ steps.snake.outputs.path }} output/github-contribution-grid-snake.svg
+          cp ${{ steps.snake.outputs.path_dark }} output/github-contribution-grid-snake-dark.svg || true
+          
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "🐍 Update contribution snake $(date +'%Y-%m-%d')"
+          git push origin main
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

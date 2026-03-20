@@ -1,0 +1,32 @@
+name: Update GitHub Profile Stats
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run at 8 AM and 8 PM daily
+    - cron: '0 0,12 * * *'
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update WakaTime Stats
+        uses: athul/waka-readme@master
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          STATS_TYPE: time
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "📊 Update stats $(date +'%Y-%m-%d %H:%M')"
+          git push

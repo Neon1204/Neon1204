@@ -122,8 +122,17 @@
 
 <br>
 
-### ⏱️ Coding Time (WakaTime)
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Neon1204&theme=radical&utcOffset=8" width="40%" alt="Productive Time"/>
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
+
+<br>
+
+### 🐍 Contribution Snake
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Neon1204/Neon1204/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Neon1204/Neon1204/output/github-contribution-grid-snake.svg">
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Neon1204/Neon1204/output/github-contribution-grid-snake.svg" width="100%">
+</picture>
 
 </div>
 
