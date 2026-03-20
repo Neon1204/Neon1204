@@ -3,28 +3,29 @@ name: Update GitHub Profile
 on:
   workflow_dispatch:
   schedule:
-    # Run at 8 AM and 8 PM daily
-    - cron: '0 0,12 * * *'
+    # Run at midnight daily
+    - cron: '0 0 * * *'
 
 jobs:
   update-snake:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Generate Contribution Snake SVG
         uses: Platane/snk@v3
-        id: snake
         with:
           github_user_name: Neon1204
           github_api_token: ${{ secrets.GH_TOKEN }}
+          outputs: |
+            output/github-contribution-grid-snake.svg
+            output/github-contribution-grid-snake-dark.svg
 
       - name: Push Snake SVG
         run: |
-          mkdir -p output
-          cp ${{ steps.snake.outputs.path }} output/github-contribution-grid-snake.svg
-          cp ${{ steps.snake.outputs.path_dark }} output/github-contribution-grid-snake-dark.svg || true
-          
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
