@@ -1,23 +1,29 @@
-# Xiang N | XN
+# XiangN.
+
+<h4 align="center" style="color: #a78bfa;">The water does not strive to be ahead, but to flow on endlessly.</h4>
+<h4 align="center" style="color: #8b5cf6;">时光流转，我在向前</h4>
+
+<br>
 
 <div align="center">
   <a href="https://github.com/Neon1204">
-    <img src="https://raw.githubusercontent.com/Neon1204/Neon1204/main/images/avatar.jpg" width="120" height="120" style="border-radius: 50%; border: 3px solid #8b5cf6;" />
+    <img src="https://raw.githubusercontent.com/Neon1204/Neon1204/main/images/avatar.jpg" width="130" height="130" style="border-radius: 50%; border: 4px solid #8b5cf6; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);" />
   </a>
 </div>
 
-<h3 align="center">Xiang N</h3>
-<h4 align="center" style="color: #a78bfa;">时光流转，我在向前</h4>
+<br>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=380&color=a78bfa&lines=%E5%88%9B%E9%80%A0%E6%9C%89%E4%B8%AA%E6%80%A7%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%96%E7%95%8C&center=true" alt="Typing SVG" />
+  <img src="https://img.shields.io/github/followers/Neon1204?style=for-the-badge&color=8b5cf6&labelColor=0f172a&logo=github&logoColor=8b5cf6" />
+  <img src="https://img.shields.io/github/stars/Neon1204?affiliations=OWNER%2CCOLLABORATOR&style=for-the-badge&color=06b6d4&labelColor=0f172a&logo=github&logoColor=06b6d4" />
+  <img src="https://komarev.com/ghpvc/?username=Neon1204&color=8b5cf6&style=for-the-badge&label=Profile+Views" />
 </div>
 
 <br>
 
 <div align="center">
   <a href="https://neon1204.github.io/Xiang-N">
-    <img src="https://img.shields.io/badge/Blog-11 inherit?style=flat-square&logo=ghost&logoColor=white" />
+    <img src="https://img.shields.io/badge/Blog-11?style=flat-square&logo=ghost&logoColor=white" />
   </a>
   <a href="https://juejin.cn/user/3169251675879312">
     <img src="https://img.shields.io/badge/Juejin-007FFF?style=flat-square&logo=juejin&logoColor=white" />
@@ -32,13 +38,6 @@
 
 <br>
 
-<div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=Neon1204&theme=transparent&hide_border=true&background=0f172a&border=1e293b&stroke=a78bfa&ring=a78bfa&fire=a78bfa&currStreakNum=a78bfa&sideNums=a78bfa&currStreakLabel=a78bfa&sideLabels=a78bfa&labelColor=64748b&sideLabelColor=64748b" width="48%" alt="GitHub Streak" />
-  <img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=Neon1204&show_icons=true&theme=transparent&icon_color=a78bfa&hide_border=true&bg_color=0f172a&rank_icon=github&border_color=1e293b" width="48%" alt="GitHub Stats" />
-</div>
-
-<br>
-
 <img src="https://raw.githubusercontent.com/Neon1204/Neon1204/main/images/banner.jpg" alt="Banner" width="100%" style="border-radius: 12px;" />
 
 <br>
@@ -49,7 +48,7 @@
 
 <div align="center">
 
-### 🖥️ 前端
+### 🖥️ Frontend
 
 <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vuedotjs&logoColor=white" />
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" />
@@ -82,35 +81,52 @@
 <img src="https://img.shields.io/badge/Cursor-000?style=flat&logo=cursor&logoColor=white" />
 <img src="https://img.shields.io/badge/Xcode-147EFB?style=flat&logo=xcode&logoColor=white" />
 
+### 📚 Dev Forum
+
+<img src="https://img.shields.io/badge/Juejin-007FFF?style=flat&logo=juejin&logoColor=white" />
+<img src="https://img.shields.io/badge/博客园-FF69B4?style=flat&logo=blogger&logoColor=white" />
+<img src="https://img.shields.io/badge/LeetCode-000?style=flat&logo=LeetCode&logoColor=#d16c06" />
+<img src="https://img.shields.io/badge/StackOverflow-FE7A16?style=flat&logo=stack-overflow&logoColor=white" />
+
 </div>
 
 </details>
 
 <br>
 
+## 📊 GitHub Stats
+
 <div align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Neon1204&theme=transparent&bg_color=0f172a&border=1e293b&border_color=1e293b" width="100%" alt="GitHub Overview" />
-</div>
+
+### 🔥 Streak & Activity
+<img src="https://github-readme-streak-stats.herokuapp.com?user=Neon1204&theme=radical" width="40%" alt="GitHub Streak" />
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=Neon1204&show_icons=true&theme=radical&icon_color=8b5cf6&border_color=1e293b&hide_border=true&include_all_commits=true" width="40%" alt="GitHub Stats"/>
+
+### 💻 Most Used Languages  
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=compact&theme=radical&border_color=1e293b&hide_border=true&langs_count=8" width="40%" alt="Top Languages"/>
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=donut&theme=radical&hide_border=true&langs_count=6" width="40%" alt="Languages Donut Chart"/>
+
+### 📊 Language Distribution
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Neon1204&theme=radical" width="40%" alt="Repos per Language"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Neon1204&theme=radical" width="40%" alt="Most Commit Language"/>
 
 <br>
 
-### 📈 Activity Graph
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=Neon1204&bg_color=0f172a&color=a78bfa&line=a78bfa&point=a78bfa&area=true&hide_border=true" width="100%" alt="Activity Graph" />
+### 📈 Activity Graph  
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=Neon1204&bg_color=0f172a&color=8b5cf6&line=8b5cf6&point=06b6d4&area=true&hide_border=true" width="100%" alt="GitHub Activity Graph"/>
+
+### 📊 GitHub Overview
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Neon1204&theme=radical" width="100%" alt="GitHub Overview"/>
 
 <br>
 
 ### 🏆 Achievements
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Neon1204&theme=transparent&no-frame=true&column=5&margin-w=10&margin-h=15&border=1e293b&stroke=a78bfa&ring=a78bfa" width="100%" alt="Trophies" />
-</div>
+<img src="https://github-profile-trophy.vercel.app/?username=Neon1204&theme=radical&no-frame=true&column=4&margin-w=15&margin-h=15" width="100%" alt="Trophies"/>
 
 <br>
 
-### 💻 Most Used Languages
-<div align="center">
-  <img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=donut&theme=transparent&hide_border=true&bg_color=0f172a&border_color=1e293b&langs_count=6" width="45%" alt="Languages" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Neon1204&theme=transparent&bg_color=0f172a&border=1e293b" width="45%" alt="Top Language" />
-</div>
+### ⏱️ Productive Time
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Neon1204&theme=radical&utcOffset=8" width="40%" alt="Productive Time"/>
 
 <br>
 
@@ -121,16 +137,18 @@
   <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Neon1204/Neon1204/output/github-contribution-grid-snake.svg" width="100%">
 </picture>
 
+</div>
+
 <br>
 
 ## 🔥 Featured Repositories
 
 <div align="center">
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Neon1204&repo=TrendRadar&theme=transparent&border_color=1e293b&hide_border=true&show_owner=true&bg_color=0f172a)](https://github.com/Neon1204/TrendRadar)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Neon1204&repo=openclaw-control-center&theme=transparent&border_color=1e293b&hide_border=true&show_owner=true&bg_color=0f172a)](https://github.com/Neon1204/openclaw-control-center)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Neon1204&repo=github-stars-showcase&theme=transparent&border_color=1e293b&hide_border=true&show_owner=true&bg_color=0f172a)](https://github.com/Neon1204/github-stars-showcase)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Neon1204&repo=openclaw&theme=transparent&border_color=1e293b&hide_border=true&show_owner=true&bg_color=0f172a)](https://github.com/Neon1204/openclaw)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Neon1204&repo=TrendRadar&theme=radical&border_color=1e293b&hide_border=true&show_owner=true)](https://github.com/Neon1204/TrendRadar)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Neon1204&repo=openclaw-control-center&theme=radical&border_color=1e293b&hide_border=true&show_owner=true)](https://github.com/Neon1204/openclaw-control-center)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Neon1204&repo=github-stars-showcase&theme=radical&border_color=1e293b&hide_border=true&show_owner=true)](https://github.com/Neon1204/github-stars-showcase)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Neon1204&repo=openclaw&theme=radical&border_color=1e293b&hide_border=true&show_owner=true)](https://github.com/Neon1204/openclaw)
 
 </div>
 
@@ -138,8 +156,6 @@
 
 ---
 
-<p align="center">
-  <a href="https://github.com/Neon1204">
-    <img src="https://komarev.com/ghpvc/?username=Neon1204&style=flat-square&color=a78bfa&label=Profile+Views" alt="Profile Views" />
-  </a>
-</p>
+<div align="center">
+  <sub>Last updated: $(date +'%Y-%m-%d %H:%M:%S')</sub>
+</div>
