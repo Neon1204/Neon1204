@@ -3,7 +3,6 @@ name: Generate Contribution Snake
 on:
   workflow_dispatch:
   schedule:
-    # Run every day at midnight
     - cron: '0 0 * * *'
 
 jobs:
@@ -11,21 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-          fetch-depth: 0
 
-      - name: Generate Github Contribution Snake
-        uses: mikhail-berlinkov/github-contributions-grid-snake@2.2.1
+      - name: Generate Contribution Snake
+        uses: janlikar/github-contributions-svg@v1.2.2
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          commit_emoji: 'snake'
-          grid_emoji: '⬜'
+          username: ${{ secrets.GH_USR }}
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Push Snake SVG
         run: |
           mkdir -p output
-          cp github-snake.svg output/github-contribution-grid-snake.svg || true
+          ls -la
+          cp github-contribution-grid-snake.svg output/github-contribution-grid-snake.svg 2>/dev/null || \
+          cp github-snake.svg output/github-contribution-grid-snake.svg 2>/dev/null || \
+          cp contributions.svg output/github-contribution-grid-snake.svg 2>/dev/null || \
+          echo "No SVG found"
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
