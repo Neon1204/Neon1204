@@ -1,0 +1,28 @@
+name: Snake
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - uses: platane/snk@v3
+        with:
+          github_user_name: Neon1204
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: commit and push
+        run: |
+          mkdir -p output
+          cp github-contribution-grid-snake.svg output/
+          git config --local user.email "action@github.com"  
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "snake"
+          git push origin main
