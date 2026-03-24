@@ -14,16 +14,16 @@ jobs:
 
       - name: Generate Contribution Snake SVG
         uses: Platane/snk@v3
-        id: snake
         with:
           github_user_name: ${{ secrets.GH_USR }}
-          github_api_token: ${{ secrets.GH_TOKEN }}
+          github_token: ${{ secrets.GH_TOKEN }}
 
       - name: Push Snake SVG
         run: |
           mkdir -p output
-          cp "${{ steps.snake.outputs.path }}" output/github-contribution-grid-snake.svg
-          cp "${{ steps.snake.outputs.path_dark }}" output/github-contribution-grid-snake-dark.svg || true
+          # snk outputs to github-contribution-grid-snake.svg in current dir
+          cp github-contribution-grid-snake.svg output/github-contribution-grid-snake.svg || true
+          cp github-contribution-grid-snake-dark.svg output/github-contribution-grid-snake-dark.svg || true
           
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
