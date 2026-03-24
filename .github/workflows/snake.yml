@@ -15,37 +15,35 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Generate Contribution Snake SVG
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const query = `
-            {
-              user(login: "Neon1204") {
-                contributionsCollection {
-                  contributionCalendar {
-                    totalContributions
-                    weeks {
-                      contributionDays {
-                        contributionCount
-                        date
-                      }
+        run: |
+          cat > /tmp/gen.js << 'JSEOF'
+          const query = `
+          {
+            user(login: "Neon1204") {
+              contributionsCollection {
+                contributionCalendar {
+                  totalContributions
+                  weeks {
+                    contributionDays {
+                      contributionCount
+                      date
                     }
                   }
                 }
               }
-            }`;
-            
+            }
+          }`;
+
+          async function main() {
             const res = await graphql(query);
             const weeks = res.user.contributionsCollection.contributionCalendar.weeks;
-            
+            const total = res.user.contributionsCollection.contributionCalendar.totalContributions;
+
             const cell = 11;
             const gap = 2;
             const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
             const lastWeeks = weeks.slice(-52);
-            
-            const svgWidth = lastWeeks.length * (cell + gap) + 20;
-            const svgHeight = 7 * (cell + gap) + 40;
-            
+
             let maxVal = 0;
             for (const w of lastWeeks) {
               for (const d of w.contributionDays) {
@@ -53,21 +51,24 @@ jobs:
               }
             }
             if (maxVal === 0) maxVal = 1;
-            
-            let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}">
-            <style>.t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:9px;fill:#333}</style>
-            <rect width="${svgWidth}" height="${svgHeight}" fill="white"/>
-            `;
-            
+
+            const svgWidth = lastWeeks.length * (cell + gap) + 20;
+            const svgHeight = 7 * (cell + gap) + 40;
+
+            let svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + svgWidth + '" height="' + svgHeight + '" viewBox="0 0 ' + svgWidth + ' ' + svgHeight + '">';
+            svg += '<style>.t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:9px;fill:#333}</style>';
+            svg += '<rect width="' + svgWidth + '" height="' + svgHeight + '" fill="white"/>';
+
             // month labels
             let x = 20;
             let lastMonth = -1;
-            for (const week of lastWeeks) {
+            for (let wi = 0; wi < lastWeeks.length; wi++) {
+              const week = lastWeeks[wi];
               for (const day of week.contributionDays) {
                 if (day.date) {
-                  const m = parseInt(day.date.split("-')[1]);
+                  const m = parseInt(day.date.split("-")[1]);
                   if (m !== lastMonth) {
-                    svg += `<text x="${x}" y="11" class="t">${months[m-1]}</text>`;
+                    svg += '<text x="' + x + '" y="11" class="t">' + months[m-1] + '</text>';
                     lastMonth = m;
                   }
                   break;
@@ -75,7 +76,7 @@ jobs:
               }
               x += cell + gap;
             }
-            
+
             // contribution squares
             for (let wi = 0; wi < lastWeeks.length; wi++) {
               const week = lastWeeks[wi];
@@ -91,15 +92,23 @@ jobs:
                 else color = "#216e39";
                 const px = 20 + wi * (cell + gap);
                 const py = 20 + di * (cell + gap);
-                svg += `<rect x="${px}" y="${py}" width="${cell}" height="${cell}" fill="${color}" rx="1"/>`;
+                svg += '<rect x="' + px + '" y="' + py + '" width="' + cell + '" height="' + cell + '" fill="' + color + '" rx="1"/>';
               }
             }
-            
-            svg += `<text x="20" y="${svgHeight-5}" class="t" font-size="8" fill="#666">@Neon1204</text>`;
-            svg += "</svg>";
-            
+
+            svg += '<text x="20" y="' + (svgHeight-5) + '" class="t" font-size="8" fill="#666">@Neon1204</text>';
+            svg += '</svg>';
+
             require('fs').writeFileSync('github-contribution-grid-snake.svg', svg);
-            console.log("SVG generated, total contributions:", res.user.contributionsCollection.contributionCalendar.totalContributions);
+            console.log("SVG generated - total contributions:", total);
+          }
+
+          main().catch(err => {
+            console.error(err);
+            process.exit(1);
+          });
+        JSEOF
+          node /tmp/gen.js
 
       - name: Push Snake SVG
         run: |
