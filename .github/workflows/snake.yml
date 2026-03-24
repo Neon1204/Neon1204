@@ -22,8 +22,8 @@ jobs:
       - name: Push Snake SVG
         run: |
           mkdir -p output
-          cp ${{ steps.snake.outputs.path }} output/github-contribution-grid-snake.svg
-          cp ${{ steps.snake.outputs.path_dark }} output/github-contribution-grid-snake-dark.svg || true
+          cp "${{ steps.snake.outputs.path }}" output/github-contribution-grid-snake.svg
+          cp "${{ steps.snake.outputs.path_dark }}" output/github-contribution-grid-snake-dark.svg || true
           
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
