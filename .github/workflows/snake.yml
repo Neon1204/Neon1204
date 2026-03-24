@@ -10,8 +10,72 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Generate Snake SVG
-        run: python3 gen_snake.py
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const query = `{
+              user(login: "Neon1204") {
+                contributionsCollection {
+                  contributionCalendar {
+                    totalContributions
+                    weeks {
+                      contributionDays {
+                        contributionCount
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            }`;
+            try {
+              const res = await graphql(query);
+              const weeks = res.user.contributionsCollection.contributionCalendar.weeks.slice(-52);
+              let max = 0;
+              for (const w of weeks) {
+                for (const d of w.contributionDays) {
+                  if (d.contributionCount > max) max = d.contributionCount;
+                }
+              }
+              if (max === 0) max = 1;
+              const cell = 11, gap = 2;
+              const w = weeks.length;
+              const svgW = w * (cell + gap) + 20;
+              const svgH = 7 * (cell + gap) + 40;
+              const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+              let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${svgW}" height="${svgH}"><rect width="${svgW}" height="${svgH}" fill="white"/>`;
+              let x = 20, lastM = -1;
+              for (let wi = 0; wi < weeks.length; wi++) {
+                for (const day of weeks[wi].contributionDays) {
+                  if (day.date) {
+                    const m = parseInt(day.date.split("-")[1]);
+                    if (m !== lastM) {
+                      svg += `<text x="${x}" y="11" font-size="9">${months[m-1]}</text>`;
+                      lastM = m;
+                    }
+                    break;
+                  }
+                }
+                x += cell + gap;
+              }
+              for (let wi = 0; wi < weeks.length; wi++) {
+                for (let di = 0; di < 7; di++) {
+                  const day = weeks[wi].contributionDays[di];
+                  if (!day || !day.date) continue;
+                  const lvl = day.contributionCount / max;
+                  const color = lvl === 0 ? "#ebedf0" : lvl < 0.25 ? "#9be9a8" : lvl < 0.5 ? "#40c463" : lvl < 0.75 ? "#30a14e" : "#216e39";
+                  const px = 20 + wi * (cell + gap);
+                  const py = 20 + di * (cell + gap);
+                  svg += `<rect x="${px}" y="${py}" width="${cell}" height="${cell}" fill="${color}" rx="1"/>`;
+                }
+              }
+              svg += `<text x="20" y="${svgH-5}" font-size="8" fill="#666">@Neon1204</text></svg>`;
+              require("fs").writeFileSync("github-contribution-grid-snake.svg", svg);
+              console.log("SVG generated, total:", res.user.contributionsCollection.contributionCalendar.totalContributions);
+            } catch (e) {
+              console.error("Error:", e.message);
+              process.exit(1);
+            }
       - name: Push
         run: |
           mkdir -p output
