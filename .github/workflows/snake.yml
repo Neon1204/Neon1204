@@ -11,20 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Generate Contribution Snake SVG
-        uses: Platane/snk@v3
         with:
-          github_user_name: ${{ secrets.GH_USR }}
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Generate Github Contribution Snake
+        uses: mikhail-berlinkov/github-contributions-grid-snake@2.2.1
+        with:
           github_token: ${{ secrets.GH_TOKEN }}
+          commit_emoji: 'snake'
+          grid_emoji: '⬜'
 
       - name: Push Snake SVG
         run: |
           mkdir -p output
-          # snk outputs to github-contribution-grid-snake.svg in current dir
-          cp github-contribution-grid-snake.svg output/github-contribution-grid-snake.svg || true
-          cp github-contribution-grid-snake-dark.svg output/github-contribution-grid-snake-dark.svg || true
-          
+          cp github-snake.svg output/github-contribution-grid-snake.svg || true
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
