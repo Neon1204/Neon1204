@@ -1,32 +1,8 @@
 name: Snake
-
 on:
   workflow_dispatch:
-
-permissions:
-  contents: write
-
 jobs:
-  snake:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Create SVG
-        run: |
-          cat > github-contribution-grid-snake.svg << 'EOF'
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="130">
-<rect width="600" height="130" fill="white"/>
-<text x="20" y="30" font-size="14">Contribution Snake</text>
-<text x="20" y="50" font-size="10">GitHub API unavailable in Actions runner</text>
-<text x="20" y="70" font-size="10">Generated on: </text><text x="110" y="70" font-size="10">placeholder</text>
-</svg>
-EOF
-      - name: Push
-        run: |
-          mkdir -p output
-          cp github-contribution-grid-snake.svg output/
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          git diff --staged --quiet || git commit -m "snake"
-          git push origin main
+      - run: echo hello
