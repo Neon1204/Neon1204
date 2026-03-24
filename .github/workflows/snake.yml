@@ -5,112 +5,101 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+permissions:
+  contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Generate Contribution Snake SVG
+        uses: actions/github-script@v7
         with:
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: Generate Snake SVG
-        run: |
-          pip install requests --quiet
-          python3 << 'PYEOF'
-          import os, json
-          from datetime import datetime
-          import requests
-
-          token = os.environ.get("GH_TOKEN", "")
-          username = os.environ.get("GH_USR", "")
-          headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
-
-          query = """
-          {
-            user(login: "%s") {
-              contributionsCollection {
-                contributionCalendar {
-                  totalContributions
-                  weeks {
-                    contributionDays {
-                      contributionCount
-                      date
+          script: |
+            const query = `
+            {
+              user(login: "Neon1204") {
+                contributionsCollection {
+                  contributionCalendar {
+                    totalContributions
+                    weeks {
+                      contributionDays {
+                        contributionCount
+                        date
+                      }
                     }
                   }
                 }
               }
+            }`;
+            
+            const res = await graphql(query);
+            const weeks = res.user.contributionsCollection.contributionCalendar.weeks;
+            
+            const cell = 11;
+            const gap = 2;
+            const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+            const lastWeeks = weeks.slice(-52);
+            
+            const svgWidth = lastWeeks.length * (cell + gap) + 20;
+            const svgHeight = 7 * (cell + gap) + 40;
+            
+            let maxVal = 0;
+            for (const w of lastWeeks) {
+              for (const d of w.contributionDays) {
+                if (d.contributionCount > maxVal) maxVal = d.contributionCount;
+              }
             }
-          }
-          """ % username
-
-          resp = requests.post(
-            "https://api.github.com/graphql",
-            headers=headers,
-            json={"query": query},
-            timeout=30
-          )
-          data = resp.json()
-          print("Response status:", resp.status_code)
-          print("Response:", json.dumps(data, indent=2)[:500])
-
-          if "data" not in data:
-              print("ERROR: no data in response")
-              exit(1)
-
-          weeks = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
-          max_val = max(d["contributionCount"] for w in weeks for d in w["contributionDays"]) if weeks else 1
-
-          cell = 12
-          gap = 2
-          months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-
-          svg_width = 53 * (cell + gap) + 20
-          svg_height = 7 * (cell + gap) + 50
-
-          svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{svg_width}" height="{svg_height}" viewBox="0 0 {svg_width} {svg_height}">
-          <style>.text{{font-family:monospace;font-size:10px;fill:#333}}</style>
-          <rect width="{svg_width}" height="{svg_height}" fill="white"/>
-          '''
-
-          # month labels
-          x = 20
-          last_month = -1
-          for w_idx, week in enumerate(weeks):
-              for d in week["contributionDays"]:
-                  m = int(d["date"][5:7])
-                  if m != last_month:
-                      svg += f'<text x="{x}" y="12" class="text">{months[m-1]}</text>'
-                      last_month = m
-                      break
-              x += cell + gap
-
-          # contribution squares
-          for w_idx, week in enumerate(weeks):
-              for d_idx, day in enumerate(week["contributionDays"]):
-                  count = day["contributionCount"]
-                  level = min(count / max_val, 1.0) if max_val > 0 else 0
-                  if level == 0:
-                      color = "#ebedf0"
-                  elif level < 0.25:
-                      color = "#9be9a8"
-                  elif level < 0.5:
-                      color = "#40c463"
-                  elif level < 0.75:
-                      color = "#30a14e"
-                  else:
-                      color = "#216e39"
-                  px = 20 + w_idx * (cell + gap)
-                  py = 30 + d_idx * (cell + gap)
-                  svg += f'<rect x="{px}" y="{py}" width="{cell}" height="{cell}" fill="{color}" rx="1"/>'
-
-          svg += f'<text x="20" y="{svg_height - 5}" class="text" font-size="9">Generated by {username} on {datetime.now().strftime("%Y-%m-%d")}</text>'
-          svg += "</svg>"
-
-          with open("github-contribution-grid-snake.svg", "w") as f:
-              f.write(svg)
-          print("SVG generated successfully")
-          PYEOF
+            if (maxVal === 0) maxVal = 1;
+            
+            let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}">
+            <style>.t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:9px;fill:#333}</style>
+            <rect width="${svgWidth}" height="${svgHeight}" fill="white"/>
+            `;
+            
+            // month labels
+            let x = 20;
+            let lastMonth = -1;
+            for (const week of lastWeeks) {
+              for (const day of week.contributionDays) {
+                if (day.date) {
+                  const m = parseInt(day.date.split("-')[1]);
+                  if (m !== lastMonth) {
+                    svg += `<text x="${x}" y="11" class="t">${months[m-1]}</text>`;
+                    lastMonth = m;
+                  }
+                  break;
+                }
+              }
+              x += cell + gap;
+            }
+            
+            // contribution squares
+            for (let wi = 0; wi < lastWeeks.length; wi++) {
+              const week = lastWeeks[wi];
+              for (let di = 0; di < 7; di++) {
+                const day = week.contributionDays[di];
+                if (!day || !day.date) continue;
+                const level = day.contributionCount / maxVal;
+                let color;
+                if (level === 0) color = "#ebedf0";
+                else if (level < 0.25) color = "#9be9a8";
+                else if (level < 0.5) color = "#40c463";
+                else if (level < 0.75) color = "#30a14e";
+                else color = "#216e39";
+                const px = 20 + wi * (cell + gap);
+                const py = 20 + di * (cell + gap);
+                svg += `<rect x="${px}" y="${py}" width="${cell}" height="${cell}" fill="${color}" rx="1"/>`;
+              }
+            }
+            
+            svg += `<text x="20" y="${svgHeight-5}" class="t" font-size="8" fill="#666">@Neon1204</text>`;
+            svg += "</svg>";
+            
+            require('fs').writeFileSync('github-contribution-grid-snake.svg', svg);
+            console.log("SVG generated, total contributions:", res.user.contributionsCollection.contributionCalendar.totalContributions);
 
       - name: Push Snake SVG
         run: |
@@ -121,6 +110,3 @@ jobs:
           git add -A
           git diff --staged --quiet || git commit -m "🐍 Update contribution snake $(date +'%Y-%m-%d')"
           git push origin main
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_USR: ${{ secrets.GH_USR }}
