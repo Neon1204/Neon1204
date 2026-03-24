@@ -10,21 +10,108 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Generate Contribution Snake
-        uses: janlikar/github-contributions-svg@v1.2.2
         with:
-          username: ${{ secrets.GH_USR }}
-          token: ${{ secrets.GH_TOKEN }}
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Generate Snake SVG
+        run: |
+          pip install requests --quiet
+          python3 << 'PYEOF'
+          import os, base64, json
+          from datetime import datetime, timedelta
+          import requests
+
+          token = os.environ.get("GH_TOKEN", "")
+          headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+
+          # Get contribution data via GraphQL
+          username = os.environ.get("GH_USR", "")
+          query = """
+          {
+            user(login: "%s") {
+              contributionsCollection {
+                contributionCalendar {
+                  totalContributions
+                  weeks {
+                    contributionDays {
+                      contributionCount
+                      date
+                    }
+                  }
+                }
+              }
+            }
+          }
+          """ % username
+
+          resp = requests.post(
+            "https://api.github.com/graphql",
+            headers=headers,
+            json={"query": query},
+            timeout=30
+          )
+          data = resp.json()
+
+          weeks = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
+          max_val = max(d["contributionCount"] for w in weeks for d in w["contributionDays"]) if weeks else 1
+
+          # Generate SVG
+          day_names = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+          cell = 12
+          gap = 2
+          months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+
+          svg_width = 53 * (cell + gap) + 20
+          svg_height = 7 * (cell + gap) + 30 + 20
+
+          svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{svg_width}" height="{svg_height}" viewBox="0 0 {svg_width} {svg_height}">
+          <style>.text{{font-family:monospace;font-size:10px;fill:#333}}</style>
+          <rect width="{svg_width}" height="{svg_height}" fill="white"/>
+          '''
+
+          # month labels
+          x = 20
+          last_month = -1
+          for w_idx, week in enumerate(weeks):
+              for d in week["contributionDays"]:
+                  m = int(d["date"][5:7])
+                  if m != last_month:
+                      svg += f'<text x="{x}" y="12" class="text">{months[m-1]}</text>'
+                      last_month = m
+                      break
+              x += cell + gap
+
+          # contribution squares
+          for w_idx, week in enumerate(weeks):
+              for d_idx, day in enumerate(week["contributionDays"]):
+                  count = day["contributionCount"]
+                  level = min(count / max_val, 1.0) if max_val > 0 else 0
+                  if level == 0:
+                      color = "#ebedf0"
+                  elif level < 0.25:
+                      color = "#9be9a8"
+                  elif level < 0.5:
+                      color = "#40c463"
+                  elif level < 0.75:
+                      color = "#30a14e"
+                  else:
+                      color = "#216e39"
+                  px = 20 + w_idx * (cell + gap)
+                  py = 20 + d_idx * (cell + gap)
+                  svg += f'<rect x="{px}" y="{py}" width="{cell}" height="{cell}" fill="{color}" rx="2"/>'
+
+          svg += "</svg>"
+
+          with open("github-contribution-grid-snake.svg", "w") as f:
+              f.write(svg)
+          print("SVG generated successfully")
+          PYEOF
 
       - name: Push Snake SVG
         run: |
           mkdir -p output
-          ls -la
-          cp github-contribution-grid-snake.svg output/github-contribution-grid-snake.svg 2>/dev/null || \
-          cp github-snake.svg output/github-contribution-grid-snake.svg 2>/dev/null || \
-          cp contributions.svg output/github-contribution-grid-snake.svg 2>/dev/null || \
-          echo "No SVG found"
+          cp github-contribution-grid-snake.svg output/github-contribution-grid-snake.svg
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
@@ -32,3 +119,4 @@ jobs:
           git push origin main
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_USR: ${{ secrets.GH_USR }}
