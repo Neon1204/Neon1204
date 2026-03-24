@@ -1,8 +1,23 @@
 name: Snake
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello
+      - uses: actions/checkout@v4
+      - name: Generate Snake SVG
+        run: python3 gen_snake.py
+      - name: Push
+        run: |
+          mkdir -p output
+          cp github-contribution-grid-snake.svg output/
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git diff --staged --quiet || git commit -m "snake $(date +%Y-%m-%d)"
+          git push origin main
