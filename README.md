@@ -129,6 +129,14 @@
 
 <br>
 
+### 📈 Activity Graph
+<img src="./output/activity-graph.svg" width="100%" alt="GitHub Activity Graph"/>
+
+### 🏆 Achievements
+<img src="./output/profile-trophies.svg" width="100%" alt="GitHub profile highlights"/>
+
+<br>
+
 ### ⏱️ Coding Time & Stats
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Neon1204&theme=radical&utcOffset=8" width="40%" alt="Productive Time"/>
 

@@ -129,6 +129,14 @@
 
 <br>
 
+### 📈 活动图
+<img src="./output/activity-graph.svg" width="100%" alt="GitHub 活动图"/>
+
+### 🏆 成就
+<img src="./output/profile-trophies.svg" width="100%" alt="GitHub 公开数据亮点"/>
+
+<br>
+
 ### ⏱️ 编码时间统计
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Neon1204&theme=radical&utcOffset=8" width="40%" alt="编码时间"/>
 

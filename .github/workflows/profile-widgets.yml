@@ -1,0 +1,70 @@
+name: Profile widgets
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "README.md"
+      - "README.zh-CN.md"
+      - "scripts/generate-profile-widgets.mjs"
+      - ".github/workflows/profile-widgets.yml"
+  schedule:
+    - cron: "20 0 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const login = "Neon1204";
+            const result = await github.graphql(`
+              query($login: String!) {
+                user(login: $login) {
+                  followers { totalCount }
+                  repositories(first: 100, privacy: PUBLIC, ownerAffiliations: OWNER) {
+                    totalCount
+                    nodes { stargazerCount }
+                  }
+                  contributionsCollection {
+                    contributionCalendar {
+                      totalContributions
+                      weeks { contributionDays { contributionCount date } }
+                    }
+                  }
+                }
+              }
+            `, { login });
+            const user = result.user;
+            const days = user.contributionsCollection.contributionCalendar.weeks
+              .flatMap((week) => week.contributionDays)
+              .map((day) => ({ date: day.date, count: day.contributionCount }));
+            const [prs, issues] = await Promise.all([
+              github.rest.search.issuesAndPullRequests({ q: `author:${login} type:pr is:public` }),
+              github.rest.search.issuesAndPullRequests({ q: `author:${login} type:issue is:public` }),
+            ]);
+            const data = {
+              days,
+              totalContributions: user.contributionsCollection.contributionCalendar.totalContributions,
+              totalStars: user.repositories.nodes.reduce((sum, repo) => sum + repo.stargazerCount, 0),
+              publicRepos: user.repositories.totalCount,
+              followers: user.followers.totalCount,
+              pullRequests: prs.data.total_count,
+              issues: issues.data.total_count,
+            };
+            require("fs").writeFileSync("profile-data.json", JSON.stringify(data));
+      - name: Generate SVG widgets
+        run: node scripts/generate-profile-widgets.mjs
+      - name: Commit generated widgets
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add output/activity-graph.svg output/profile-trophies.svg
+          git diff --staged --quiet || git commit -m "chore: update profile widgets"
+          git push
