@@ -1,7 +1,7 @@
 ## 🚀 关于我
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Neon1204/Neon1204/main/images/banner.jpg" alt="横幅" width="100%" />
+  <img src="https://raw.githubusercontent.com/Neon1204/Neon1204/main/images/banner.jpg" alt="横幅" width="500" />
 </div>
 
 <h3 align="center">你好，我是 XiangNi 👨‍💻</h3>
@@ -112,11 +112,11 @@
 
 ### 🔥 Streak & Activity
 <img src="https://github-readme-streak-stats.herokuapp.com?user=Neon1204&theme=radical" width="40%" alt="GitHub 连续贡献" />
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=Neon1204&show_icons=true&theme=radical&icon_color=8b5cf6&border_color=1e293b&include_all_commits=true" width="40%" alt="GitHub 统计"/>
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api?username=Neon1204&show_icons=true&theme=radical&icon_color=8b5cf6&border_color=1e293b&hide_border=true&include_all_commits=true" width="40%" alt="GitHub 统计"/>
 
 ### 💻 常用语言
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=compact&theme=radical&border_color=1e293b&langs_count=8" width="40%" alt="主要语言"/>
-<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=donut&theme=radical&langs_count=6" width="40%" alt="语言分布"/>
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=compact&theme=radical&border_color=1e293b&hide_border=true&langs_count=8" width="40%" alt="主要语言"/>
+<img src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=Neon1204&layout=donut&theme=radical&hide_border=true&langs_count=6" width="40%" alt="语言分布"/>
 
 ### 📊 语言分布
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Neon1204&theme=radical" width="40%" alt="各语言仓库数"/>
@@ -130,10 +130,10 @@
 <br>
 
 ### 📈 活动图
-<img src="./output/activity-graph.svg" width="100%" alt="GitHub 活动图"/>
+<img src="https://raw.githubusercontent.com/Neon1204/Neon1204/main/output/activity-graph.svg" width="100%" alt="GitHub 动态活动图"/>
 
 ### 🏆 成就
-<img src="./output/profile-trophies.svg" width="100%" alt="GitHub 公开数据亮点"/>
+<img src="https://raw.githubusercontent.com/Neon1204/Neon1204/main/output/profile-trophies.svg" width="100%" alt="GitHub 动态公开数据亮点"/>
 
 <br>
 

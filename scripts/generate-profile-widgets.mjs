@@ -26,7 +26,7 @@ const line = points.map((point) => `${point.x.toFixed(1)},${point.y.toFixed(1)}`
 const area = `${plot.left},${plot.top + plot.height} ${line} ${plot.left + plot.width},${plot.top + plot.height}`;
 const dots = points
   .filter((_, index) => index % 3 === 0 || index === points.length - 1)
-  .map((point) => `<circle cx="${point.x}" cy="${point.y}" r="3.5"><title>${escapeXml(point.date)}: ${point.count} contributions</title></circle>`)
+  .map((point, index) => `<circle class="activity-dot" style="animation-delay:${(index * 0.08).toFixed(2)}s" cx="${point.x}" cy="${point.y}" r="3.5"><title>${escapeXml(point.date)}: ${point.count} contributions</title></circle>`)
   .join("");
 const labels = points
   .filter((_, index) => index % 5 === 0 || index === points.length - 1)
@@ -34,9 +34,9 @@ const labels = points
   .join("");
 
 const activity = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260" role="img" aria-label="GitHub activity for the last 31 days">
-<defs><linearGradient id="line" x1="0" x2="1"><stop stop-color="#54d6e8"/><stop offset="1" stop-color="#8465e8"/></linearGradient><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6f83ea" stop-opacity=".32"/><stop offset="1" stop-color="#6f83ea" stop-opacity="0"/></linearGradient><style>text{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#64748b;font-size:12px}.title{font-size:18px;font-weight:700;fill:#334155}.value{fill:#6d6be5;font-weight:700}</style></defs>
+<defs><linearGradient id="line" x1="0" x2="1"><stop stop-color="#54d6e8"/><stop offset="1" stop-color="#8465e8"/></linearGradient><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6f83ea" stop-opacity=".32"/><stop offset="1" stop-color="#6f83ea" stop-opacity="0"/></linearGradient><style>text{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;fill:#64748b;font-size:12px}.title{font-size:18px;font-weight:700;fill:#334155}.value{fill:#6d6be5;font-weight:700}.activity-line{stroke-dasharray:1300;stroke-dashoffset:1300;animation:draw 2.2s ease-out forwards}.activity-area{opacity:0;animation:fade .8s ease-out 1.35s forwards}.activity-dot{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .45s ease-out 1.55s forwards}@keyframes draw{to{stroke-dashoffset:0}}@keyframes fade{to{opacity:1}}@keyframes pop{0%{opacity:0;transform:scale(0)}70%{opacity:1;transform:scale(1.35)}100%{opacity:1;transform:scale(1)}}@media(prefers-reduced-motion:reduce){.activity-line{stroke-dashoffset:0;animation:none}.activity-area,.activity-dot{opacity:1;animation:none}}</style></defs>
 <rect width="900" height="260" rx="16" fill="#fff" stroke="#dbe4ee"/><text class="title" x="36" y="28">Contribution activity</text><text class="value" x="864" y="28" text-anchor="end">${data.totalContributions} this year</text>
-<path d="M48 193H862M48 141H862M48 89H862M48 38H862" stroke="#e7edf4"/><polygon points="${area}" fill="url(#area)"/><polyline points="${line}" fill="none" stroke="url(#line)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><g fill="#fff" stroke="#6f83ea" stroke-width="2">${dots}</g>${labels}</svg>`;
+<path d="M48 193H862M48 141H862M48 89H862M48 38H862" stroke="#e7edf4"/><polygon class="activity-area" points="${area}" fill="url(#area)"/><polyline class="activity-line" points="${line}" fill="none" stroke="url(#line)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><g fill="#fff" stroke="#6f83ea" stroke-width="2">${dots}</g>${labels}</svg>`;
 
 const metrics = [
   ["COMMITS", data.totalContributions, "this contribution year"],
@@ -49,9 +49,9 @@ const metrics = [
 const cards = metrics.map(([label, value, note], index) => {
   const x = 18 + (index % 3) * 288;
   const y = 54 + Math.floor(index / 3) * 112;
-  return `<g transform="translate(${x} ${y})"><rect width="270" height="94" rx="14" fill="#111827" stroke="#334155"/><circle cx="35" cy="35" r="21" fill="none" stroke="url(#ring)" stroke-width="5"/><text class="metric" x="35" y="41" text-anchor="middle">${value}</text><text class="label" x="67" y="31">${label}</text><text class="note" x="67" y="54">${note}</text></g>`;
+  return `<g class="metric-card" style="animation-delay:${(index * 0.12).toFixed(2)}s" transform="translate(${x} ${y})"><rect width="270" height="94" rx="14" fill="#111827" stroke="#334155"/><circle class="metric-ring" cx="35" cy="35" r="21" fill="none" stroke="url(#ring)" stroke-width="5"/><text class="metric" x="35" y="41" text-anchor="middle">${value}</text><text class="label" x="67" y="31">${label}</text><text class="note" x="67" y="54">${note}</text></g>`;
 }).join("");
-const trophies = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="286" viewBox="0 0 900 286" role="img" aria-label="GitHub profile highlights"><defs><linearGradient id="ring" x1="0" x2="1"><stop stop-color="#54d6e8"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient><style>text{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}.heading{font-size:19px;font-weight:700;fill:#e5e7eb}.metric{font-size:13px;font-weight:800;fill:#f8fafc}.label{font-size:13px;font-weight:800;fill:#a5b4fc}.note{font-size:11px;fill:#94a3b8}</style></defs><rect width="900" height="286" rx="18" fill="#0f172a"/><text class="heading" x="18" y="32">GitHub highlights · @Neon1204</text>${cards}</svg>`;
+const trophies = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="286" viewBox="0 0 900 286" role="img" aria-label="GitHub profile highlights"><defs><linearGradient id="ring" x1="0" x2="1"><stop stop-color="#54d6e8"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient><style>text{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}.heading{font-size:19px;font-weight:700;fill:#e5e7eb}.metric{font-size:13px;font-weight:800;fill:#f8fafc}.label{font-size:13px;font-weight:800;fill:#a5b4fc}.note{font-size:11px;fill:#94a3b8}.metric-card{opacity:0;animation:card-in .55s cubic-bezier(.2,.8,.2,1) forwards}.metric-ring{stroke-dasharray:132;stroke-dashoffset:132;animation:ring-in 1s ease-out .35s forwards}@keyframes card-in{from{opacity:0}to{opacity:1}}@keyframes ring-in{to{stroke-dashoffset:0}}@media(prefers-reduced-motion:reduce){.metric-card{opacity:1;animation:none}.metric-ring{stroke-dashoffset:0;animation:none}}</style></defs><rect width="900" height="286" rx="18" fill="#0f172a"/><text class="heading" x="18" y="32">GitHub highlights · @Neon1204</text>${cards}</svg>`;
 
 await Promise.all([
   writeFile("output/activity-graph.svg", activity),
