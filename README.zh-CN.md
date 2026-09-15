@@ -7,7 +7,7 @@
 <h3 align="center">你好，我是 XiangNi 👨‍💻</h3>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=500&color=8b5cf6&lines=The+water+does+not+strive+to+be+ahead,+but+to+flow+on+endlessly" alt="打字动画" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=7000&pause=2500&width=820&color=8b5cf6&center=true&vCenter=true&lines=The+water+does+not+strive+to+be+ahead%2C+but+to+flow+on+endlessly.&v=2" alt="The water does not strive to be ahead, but to flow on endlessly." width="820" />
 </div>
 
 <h4 align="center" style="color: #0077be; margin-top: 8px;">时光流转，我在向前</h4>
@@ -25,7 +25,7 @@
 </div>
 
 <p align="center">
-  <a href="https://temporary-brisk-walnut-opal041.vercel.app/">博客</a> ·
+  <a href="https://xhn-blog.vercel.app/">博客</a> ·
   <a href="https://juejin.cn/user/3169251675879312">掘金</a> ·
   <a href="https://blog.csdn.net/XHN233">CSDN</a> ·
   <a href="https://www.cnblogs.com/NeonIs99">博客园</a> ·
